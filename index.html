@@ -87,6 +87,50 @@
                 <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-700 hover:to-sky-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg shadow-blue-500/30">
                     Tính toán Kết quả
                 </button>
+
+                <div id="calc-instructions" class="calc-instructions mt-3">
+                    <p class="font-semibold">Hướng dẫn nhanh</p>
+                    <ul>
+                        <li>Nhập <strong>Tên Cột</strong>, <strong>Trọng số (%)</strong> và <strong>Điểm (0-10)</strong>.</li>
+                        <li>Tổng trọng số nên là <strong>100%</strong> để có kết quả chính xác. Nếu nhỏ hơn, kết quả vẫn tính nhưng sẽ có cảnh báo.</li>
+                        <li>Nếu bật <em>Điểm liệt</em>, các cột chứa từ <strong>giữa</strong>/<strong>giữa kì</strong> sẽ bị kiểm tra liệt (điểm &le; 1.0).</li>
+                        <li>Cho phép điểm thập phân (ví dụ <code>8.5</code>).</li>
+                        <li>Nhấn <strong>Tính toán Kết quả</strong> để xem kết quả chi tiết.</li>
+                    </ul>
+                    <details class="formula mt-2">
+                        <summary>Xem công thức &amp; chuyển đổi</summary>
+                        <div class="formula-body">
+                            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+                                <button id="copy-formula" class="btn-copy">Sao chép công thức</button>
+                                <span id="copy-feedback" style="color:green;display:none">Đã sao chép!</span>
+                            </div>
+                            <p><strong>Điểm tổng kết (hệ 10):</strong></p>
+                            <p class="mono">Điểm10 = Σ (Điểm_i × Trọng_số_i / 100)</p>
+
+                            <p><strong>Chuyển sang hệ 4 (áp dụng bảng):</strong></p>
+                            <ul>
+                                <li>Điểm10 ≥ 9.5 ⇒ Điểm4 = 4.00 (A+)</li>
+                                <li>8.5 ≤ Điểm10 &lt; 9.5 ⇒ Điểm4 = 4.00 (A)</li>
+                                <li>8.0 ≤ Điểm10 &lt; 8.5 ⇒ Điểm4 = 3.65 (A-)</li>
+                                <li>7.5 ≤ Điểm10 &lt; 8.0 ⇒ Điểm4 = 3.33 (B+)</li>
+                                <li>7.0 ≤ Điểm10 &lt; 7.5 ⇒ Điểm4 = 3.00 (B)</li>
+                                <li>6.5 ≤ Điểm10 &lt; 7.0 ⇒ Điểm4 = 2.65 (B-)</li>
+                                <li>6.0 ≤ Điểm10 &lt; 6.5 ⇒ Điểm4 = 2.33 (C+)</li>
+                                <li>5.5 ≤ Điểm10 &lt; 6.0 ⇒ Điểm4 = 2.00 (C)</li>
+                                <li>4.5 ≤ Điểm10 &lt; 5.5 ⇒ Điểm4 = 1.65 (C-)</li>
+                                <li>4.0 ≤ Điểm10 &lt; 4.5 ⇒ Điểm4 = 1.00 (D)</li>
+                                <li>Điểm10 &lt; 4.0 ⇒ Điểm4 = 0.00 (F)</li>
+                            </ul>
+
+                            <p><strong>Quy tắc điểm liệt (nếu bật):</strong></p>
+                            <p>Nếu bật <em>Điểm liệt</em>, các cột có tên chứa "giữa"/"giua" sẽ bị kiểm tra: nếu Điểm ≤ 1.0 ⇒ Nợ môn (điểm liệt).</p>
+
+                            <p class="explain-formula"><strong>Giải thích công thức:</strong> Điểm10 = Σ (Điểm_i × Trọng_số_i / 100). Tức là mỗi cột nhân điểm đạt được với trọng số tương ứng (phần trăm của cột), rồi cộng tất cả lại để có điểm tổng kết theo thang 10.</p>
+                            <p><strong>Ghi chú:</strong> Nếu tổng trọng số ≠ 100%, công cụ vẫn tính trung bình có trọng số theo công thức trên nhưng kết quả sẽ không tương đương với thang chuẩn; bạn sẽ thấy cảnh báo.</p>
+                            <p class="student-note mt-3 text-sm text-slate-500"><strong>Ghi chú dành cho sinh viên:</strong> Sinh viên cần tham khảo đề cương chi tiết học phần.</p>
+                        </div>
+                    </details>
+                </div>
             </form>
             
             <!-- Modal overlay for centered result -->
