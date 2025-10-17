@@ -5,7 +5,7 @@
 - [✨ Tính năng chính](#-tính-năng-chính)
 - [🚀 Hướng dẫn sử dụng](#-hướng-dẫn-sử-dụng)
 - [🛠️ Công nghệ sử dụng](#️-công-nghệ-sử-dụng)
-- [👨‍💻 Tác giả & Hoàn Thiện](#-tác-giả)
+- [👨‍💻 Tác giả & Hoàn Thiện](#-tác-giả-&-hoàn-thiện)
 - [⚠️ Lưu ý (Disclaimer)](#️-lưu-ý-disclaimer)
 
 ---
@@ -54,7 +54,7 @@
 
 ---
 
-## 👨‍💻 Tác giả
+## 👨‍💻 Tác giả & Hoàn thiện
 
 Phát triển ban đầu bởi **Hoan IT**. 
 Các chỉnh sửa phù hợp cho sinh viên Phenikaa được thực hiện bởi **Thạc Nguyễn Đình Vũ/Kenn** - Sinh viên Phenikaa University khóa K15 Công nghệ thông tin.
