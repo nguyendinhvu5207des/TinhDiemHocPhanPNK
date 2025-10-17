@@ -1,7 +1,4 @@
-# 🎓 Công cụ Tính điểm Học phần
-
-Một công cụ web nhẹ giúp sinh viên tính toán điểm tổng kết học phần theo thang điểm 10. Tài liệu này giữ nguyên cấu trúc mẫu README trước đó, nhưng đã cập nhật nội dung để phản ánh chính xác hành vi và tính năng hiện tại của mã nguồn trong repository.
-
+# 🎓 Công cụ Tính điểm **Học phần Đại học Phenikaa**
 ---
 
 ## 📋 Table of Contents
