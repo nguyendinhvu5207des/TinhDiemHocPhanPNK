@@ -58,3 +58,93 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         .toggle-checkbox:checked + .toggle-label::after { transform: translateX(24px); }
+
+        /* ===== Future / Glass styles ===== */
+        .glass-card{
+        background: rgba(255,255,255,0.75);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(148,163,184,0.28); /* slate-400/30 */
+        box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+        }
+        .gradient-ring{
+        background: linear-gradient(135deg,#60a5fa,#06b6d4,#a78bfa);
+        }
+        .btn-ghost{
+        padding: .375rem .625rem;
+        font-size: .825rem;
+        border-radius: .5rem;
+        border: 1px solid rgba(148,163,184,.35);
+        background: rgba(248,250,252,.7);
+        color: #0f172a;
+        transition: all .18s ease;
+        }
+        .btn-ghost:hover{ transform: translateY(-1px); box-shadow: 0 6px 16px rgba(2,6,23,.12); }
+
+        .code-block{
+        background: #0b1220;    /* đậm hơn slate-900 một chút */
+        color: #e5e7eb;
+        border-radius: .75rem;
+        padding: .75rem .875rem;
+        border: 1px solid rgba(148,163,184,.25);
+        }
+        .code-block pre{
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: .9rem;
+        line-height: 1.55;
+        white-space: pre-wrap;
+        margin: 0;
+        }
+
+        /* Accordion polish */
+        .neo-accordion{ border-top: 1px dashed rgba(148,163,184,.4); padding-top: .75rem; }
+        .neo-summary{ list-style: none; cursor: pointer; }
+        .neo-summary::-webkit-details-marker{ display: none; }
+        .neo-accordion[open] .chev{ transform: rotate(180deg); transition: transform .2s ease; }
+        /* ===== Dark rule cards (match screenshot) ===== */
+        .rule-card{
+        background:#0b1220;           /* very dark navy */
+        color:#e5e7eb;
+        border-radius:1rem;           /* big rounded corners */
+        padding:1rem 1.125rem;
+        border:1px solid rgba(148,163,184,.25);
+        box-shadow: inset 0 0 0 1px rgba(148,163,184,.08);
+        }
+
+        .rule-title{
+        font-size:.8rem;
+        letter-spacing:.08em;
+        font-weight:700;
+        color:#cbd5e1;
+        text-transform:uppercase;
+        margin-bottom:.5rem;
+        }
+
+        .rule-list{
+        margin:0;
+        padding:0;
+        list-style:none;
+        display:grid;
+        gap:.6rem;
+        }
+
+        .rule-list li{
+        display:grid;
+        grid-template-columns: 64px 1fr;   /* cột trái (điểm chữ), cột phải nội dung */
+        column-gap:.75rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+        font-variant-numeric: tabular-nums; /* canh hàng số đẹp */
+        line-height:1.55;
+        }
+
+        .rule-list b{ font-weight:700; }
+
+        /* Optional: viền nền xanh nhạt phía sau 2 card (như ảnh) */
+        #calc-instructions .grid.md\:grid-cols-2{
+        background: linear-gradient(180deg,#cfeffe 0%, #c7d2fe 100%);
+        padding: .75rem;
+        border-radius: 1rem;
+        }
+        #calc-instructions .grid.md\:grid-cols-2 > *{
+        border-radius:1rem;
+        }

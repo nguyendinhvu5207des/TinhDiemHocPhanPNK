@@ -261,3 +261,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// --- Sao chép công thức trong accordion ---
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('#copy-formula');
+  if (!btn) return;
+  e.preventDefault();
+  const src = document.getElementById('formula-text');
+  const text = src ? src.innerText.trim() : '';
+  if (!text) return;
+
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Đã sao chép!';
+    setTimeout(() => (btn.textContent = 'Sao chép'), 1400);
+  }).catch(() => {
+    btn.textContent = 'Copy lỗi, thử lại';
+    setTimeout(() => (btn.textContent = 'Sao chép'), 1400);
+  });
+});

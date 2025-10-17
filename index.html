@@ -88,49 +88,100 @@
                     Tính toán Kết quả
                 </button>
 
-                <div id="calc-instructions" class="calc-instructions mt-3">
-                    <p class="font-semibold">Hướng dẫn nhanh</p>
-                    <ul>
-                        <li>Nhập <strong>Tên Cột</strong>, <strong>Trọng số (%)</strong> và <strong>Điểm (0-10)</strong>.</li>
-                        <li>Tổng trọng số nên là <strong>100%</strong> để có kết quả chính xác. Nếu nhỏ hơn, kết quả vẫn tính nhưng sẽ có cảnh báo.</li>
-                        <li>Nếu bật <em>Điểm liệt</em>, các cột chứa từ <strong>giữa</strong>/<strong>giữa kì</strong> sẽ bị kiểm tra liệt (điểm &le; 1.0).</li>
-                        <li>Cho phép điểm thập phân (ví dụ <code>8.5</code>).</li>
-                        <li>Nhấn <strong>Tính toán Kết quả</strong> để xem kết quả chi tiết.</li>
-                    </ul>
-                    <details class="formula mt-2">
-                        <summary>Xem công thức &amp; chuyển đổi</summary>
-                        <div class="formula-body">
-                            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-                                <button id="copy-formula" class="btn-copy">Sao chép công thức</button>
-                                <span id="copy-feedback" style="color:green;display:none">Đã sao chép!</span>
-                            </div>
-                            <p><strong>Điểm tổng kết (hệ 10):</strong></p>
-                            <p class="mono">Điểm10 = Σ (Điểm_i × Trọng_số_i / 100)</p>
-
-                            <p><strong>Chuyển sang hệ 4 (áp dụng bảng):</strong></p>
-                            <ul>
-                                <li>Điểm10 ≥ 9.5 ⇒ Điểm4 = 4.00 (A+)</li>
-                                <li>8.5 ≤ Điểm10 &lt; 9.5 ⇒ Điểm4 = 4.00 (A)</li>
-                                <li>8.0 ≤ Điểm10 &lt; 8.5 ⇒ Điểm4 = 3.65 (A-)</li>
-                                <li>7.5 ≤ Điểm10 &lt; 8.0 ⇒ Điểm4 = 3.33 (B+)</li>
-                                <li>7.0 ≤ Điểm10 &lt; 7.5 ⇒ Điểm4 = 3.00 (B)</li>
-                                <li>6.5 ≤ Điểm10 &lt; 7.0 ⇒ Điểm4 = 2.65 (B-)</li>
-                                <li>6.0 ≤ Điểm10 &lt; 6.5 ⇒ Điểm4 = 2.33 (C+)</li>
-                                <li>5.5 ≤ Điểm10 &lt; 6.0 ⇒ Điểm4 = 2.00 (C)</li>
-                                <li>4.5 ≤ Điểm10 &lt; 5.5 ⇒ Điểm4 = 1.65 (C-)</li>
-                                <li>4.0 ≤ Điểm10 &lt; 4.5 ⇒ Điểm4 = 1.00 (D)</li>
-                                <li>Điểm10 &lt; 4.0 ⇒ Điểm4 = 0.00 (F)</li>
-                            </ul>
-
-                            <p><strong>Quy tắc điểm liệt (nếu bật):</strong></p>
-                            <p>Nếu bật <em>Điểm liệt</em>, các cột có tên chứa "giữa"/"giua" sẽ bị kiểm tra: nếu Điểm ≤ 1.0 ⇒ Nợ môn (điểm liệt).</p>
-
-                            <p class="explain-formula"><strong>Giải thích công thức:</strong> Điểm10 = Σ (Điểm_i × Trọng_số_i / 100). Tức là mỗi cột nhân điểm đạt được với trọng số tương ứng (phần trăm của cột), rồi cộng tất cả lại để có điểm tổng kết theo thang 10.</p>
-                            <p><strong>Ghi chú:</strong> Nếu tổng trọng số ≠ 100%, công cụ vẫn tính trung bình có trọng số theo công thức trên nhưng kết quả sẽ không tương đương với thang chuẩn; bạn sẽ thấy cảnh báo.</p>
-                            <p class="student-note mt-3 text-sm text-slate-500"><strong>Ghi chú dành cho sinh viên:</strong> Sinh viên cần tham khảo đề cương chi tiết học phần.</p>
+                <section id="calc-instructions" class="mt-4">
+                    <!-- Khung glass + viền gradient -->
+                    <div class="gradient-ring rounded-xl p-[1px]">
+                        <div class="glass-card rounded-xl p-4 md:p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="inline-flex items-center justify-center h-6 px-2 text-xs font-semibold rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                            Hướng dẫn nhanh
+                            </span>
+                            <span class="text-[11px] md:text-xs text-slate-500">Dùng cho mọi học phần – tuỳ biến tên cột, trọng số.</span>
                         </div>
-                    </details>
-                </div>
+
+                        <!-- Danh sách hướng dẫn ngắn gọn -->
+                        <ul class="space-y-1.5 text-sm text-slate-700">
+                            <li class="flex gap-2">
+                            <svg class="h-4 w-4 mt-0.5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.1 3.1 6.657-6.657a1 1 0 011.243-.171z" clip-rule="evenodd"/></svg>
+                            Nhập <strong>Tên cột</strong>, <strong>Trọng số (%)</strong> và <strong>Điểm (0–10)</strong>.
+                            </li>
+                            <li class="flex gap-2">
+                            <svg class="h-4 w-4 mt-0.5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
+                            Tổng trọng số nên là <strong>100%</strong>; nhỏ hơn vẫn tính nhưng có cảnh báo.
+                            </li>
+                            <li class="flex gap-2">
+                            <svg class="h-4 w-4 mt-0.5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 107.446 11.032l-1.49-.866A6 6 0 1110 4V2z"/></svg>
+                            Bật <em>Điểm liệt</em> để tự kiểm tra cột chứa “giữa/giua” ≤ 1.0 → nợ môn.
+                            </li>
+                            <li class="flex gap-2">
+                            <svg class="h-4 w-4 mt-0.5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 00-2 2v7a2 2 0 002 2h5l4 4v-4h3a2 2 0 002-2V5a2 2 0 00-2-2H4z"/></svg>
+                            Hỗ trợ điểm thập phân (ví dụ: 8.5, 7.8…).
+                            </li>
+                        </ul>
+
+                        <!-- Accordion công thức -->
+                        <details class="neo-accordion mt-4">
+                            <summary class="neo-summary">
+                            <div class="flex items-center justify-between w-full">
+                                <div class="flex items-center gap-2">
+                                <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"/></svg>
+                                <span class="font-semibold text-slate-800">Công thức &amp; chuyển đổi</span>
+                                </div>
+                                <svg class="chev h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.062l-4.24 4.24a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd"/></svg>
+                            </div>
+                            </summary>
+
+                            <div class="mt-3 space-y-3">
+                            <div class="code-block">
+                                <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-semibold tracking-wide text-slate-400">ĐIỂM TỔNG KẾT (HỆ 10)</span>
+                                <button id="copy-formula" class="btn-ghost">Sao chép</button>
+                                </div>
+                                <pre id="formula-text">Điểm10 = Σ (Điểm_i × Trọng_số_i / 100)</pre>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <!-- CARD 1 -->
+                                <div class="rule-card">
+                                <h4 class="rule-title">QUY ĐỔI HỆ 4 &amp; ĐIỂM CHỮ</h4>
+                                <ul class="rule-list">
+                                    <li><span>(A+)</span><span>≥ 9.5  →  <b>4.00</b></span></li>
+                                    <li><span>(A)</span><span>8.5–9.49  →  <b>4.00</b></span></li>
+                                    <li><span>(A-)</span><span>8.0–8.49  →  <b>3.65</b></span></li>
+                                    <li><span>(B+)</span><span>7.5–7.99  →  <b>3.33</b></span></li>
+                                    <li><span>(B)</span><span>7.0–7.49  →  <b>3.00</b></span></li>
+                                    <li><span>(B-)</span><span>6.5–6.99  →  <b>2.65</b></span></li>
+                                    <li><span>(C+)</span><span>6.0–6.49  →  <b>2.33</b></span></li>
+                                    <li><span>(C)</span><span>5.5–5.99  →  <b>2.00</b></span></li>
+                                    <li><span>(C-)</span><span>4.5–5.49  →  <b>1.65</b></span></li>
+                                    <li><span>(D)</span><span>4.0–4.49  →  <b>1.00</b></span></li>
+                                    <li><span></span><span>&lt; 4.0  →  <b>0.00</b> (F)</span></li>
+                                </ul>
+                                </div>
+
+                                <!-- CARD 2 -->
+                                <div class="rule-card">
+                                <h4 class="rule-title">QUY TẮC ĐIỂM LIỆT (NẾU BẬT)</h4>
+                                <ul class="rule-list">
+                                    <li>
+                                    <span></span>
+                                    <span>Tên cột chứa "giữa"/"giua" và Điểm ≤ 1.0<br>→ <b>Nợ môn</b> (điểm liệt).</span>
+                                    </li>
+                                </ul>
+                                </div>
+
+                            </div>
+
+                            <p class="text-xs text-slate-500">
+                                <strong>Ghi chú:</strong> Nếu tổng trọng số ≠ 100%, công cụ vẫn tính trung bình có trọng số
+                                nhưng sẽ cảnh báo vì không tương đương thang chuẩn. Sinh viên nên tham khảo đề cương học phần.
+                            </p>
+                            </div>
+                        </details>
+                        </div>
+                    </div>
+                    </section>
+
             </form>
             
             <!-- Modal overlay for centered result -->
